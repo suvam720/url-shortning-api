@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  mysql:
+    container_name: mysqldb
+    image: mysql:latest
+    command: mysqld --sql_mode=""
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=shortUrlDB
+    volumes:
+      - ./mysql-Data:/var/lib/mysqldata
+    ports:
+      - "5000:3306"
+    cap_add:
+      - SYS_NICE
